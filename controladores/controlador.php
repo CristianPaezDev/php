@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     echo"Eliminado";
     $id = $_GET['txtId'];
     $aprendiz = new Aprendiz();
-    $aprendiz->setPersona($id);
+    $aprendiz->setId($id);
     $aprendiz->Eliminar();
     header("location: ../index.php");
 }   

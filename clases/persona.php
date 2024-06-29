@@ -7,7 +7,6 @@ class Persona
   protected $apellido;
   protected $genero;
   protected $edad;
-  protected $persona;
 
   protected $db;
   protected $connection;
@@ -18,10 +17,11 @@ class Persona
     $this->connection   = $this->db->getConnection();
   }
 
-  public function getPersona()
+  public function getID()
   {
-    return $this->persona;
+    return $this->id;
   }
+
   public function getNombre()
   {
     return $this->nombre;
@@ -39,14 +39,10 @@ class Persona
     return $this->edad;
   }
 
-  public function setPersona($persona)  
-  {
-    $this->persona = strtolower($persona);
-  }
 
   public function setId($id)
   {
-    $this->id = strtolower($id);
+    $this->id = ($id);
   }
   public function setNombre($nombre)
   {
