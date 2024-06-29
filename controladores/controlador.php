@@ -1,11 +1,7 @@
 <?php
-require_once("../clases/aprendiz.php");
+require __DIR__ . "/../clases/aprendiz.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    // print_r("<pre>");
-    // print_r($_POST);
-    // print_r("</pre>");
 
     if (!empty($_POST['nombre']) && !empty($_POST['apellido']) && !empty($_POST['genero']) && !empty($_POST['edad'])) {
 
@@ -24,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $aprendiz->setEdad($edad);
 
         $aprendiz->Guardar();
+        header("location: ../index.php");
         
     } else {
         
@@ -31,6 +28,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
 } else {
-    
-    echo "Error en el método de envío de datos.";
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    echo"Eliminado";
+    $id = $_GET['txtId'];
+    $aprendiz = new Aprendiz();
+    $aprendiz->setPersona($id);
+    $aprendiz->Eliminar();
+    header("location: ../index.php");
+}   
 }
+

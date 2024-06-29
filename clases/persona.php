@@ -1,11 +1,13 @@
 <?php
-include_once('../libs/database.php');
+include __DIR__ .'/../libs/database.php';
 class Persona
 {
+  protected $id;
   protected $nombre;
   protected $apellido;
   protected $genero;
   protected $edad;
+  protected $persona;
 
   protected $db;
   protected $connection;
@@ -16,6 +18,10 @@ class Persona
     $this->connection   = $this->db->getConnection();
   }
 
+  public function getPersona()
+  {
+    return $this->persona;
+  }
   public function getNombre()
   {
     return $this->nombre;
@@ -33,6 +39,15 @@ class Persona
     return $this->edad;
   }
 
+  public function setPersona($persona)  
+  {
+    $this->persona = strtolower($persona);
+  }
+
+  public function setId($id)
+  {
+    $this->id = strtolower($id);
+  }
   public function setNombre($nombre)
   {
     $this->nombre = strtolower($nombre);
@@ -61,4 +76,19 @@ class Persona
     $stm->bindParam(':edad', $this->edad);
     $stm->execute();
   }
+
+  public function Listar(){
+    $sql = "SELECT * FROM aprendiz";
+    $stm = $this->connection->prepare($sql);
+    $stm->execute();
+    return $stm->fetchAll();
+  }
+
+  public function Eliminar(){
+    $sql = "DELETE FROM aprendiz WHERE id = :id";
+    $stm = $this->connection->prepare($sql);
+    $stm->bindParam(':id', $this->id);
+    $stm->execute();
+  }
+
 }

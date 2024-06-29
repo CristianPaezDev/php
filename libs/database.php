@@ -1,6 +1,6 @@
 <?php
 
-include_once('../config/config.php');
+require __DIR__ . '/../config/config.php';
 
 class Database
 {

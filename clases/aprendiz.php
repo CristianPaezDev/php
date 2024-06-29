@@ -1,14 +1,14 @@
 <?php
 
-include_once('persona.php');
+require __DIR__ ."/persona.php";
 
 class Aprendiz extends Persona 
 {
     protected $db;
     protected $connection;
 
-    public function __constructor()
+    public function __construct()
     {
-        parent::__constructor();
+        parent::__construct(); 
     }
 }
