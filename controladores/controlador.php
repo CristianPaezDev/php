@@ -1,16 +1,18 @@
 <?php
+require_once("../clases/aprendiz.php");
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    if (!empty($_GET['nombre']) && !empty($_GET['apellido']) && !empty($_GET['genero']) && !empty($_GET['edad'])) {
+    // print_r("<pre>");
+    // print_r($_POST);
+    // print_r("</pre>");
 
-        $nombre = $_GET['nombre'];
-        $apellido = $_GET['apellido'];
-        $genero = $_GET['genero'];
-        $edad = $_GET['edad'];
+    if (!empty($_POST['nombre']) && !empty($_POST['apellido']) && !empty($_POST['genero']) && !empty($_POST['edad'])) {
 
-
-        require_once("aprendiz.php");
+        $nombre = $_POST['nombre'];
+        $apellido = $_POST['apellido'];
+        $genero = $_POST['genero'];
+        $edad = $_POST['edad'];
 
 
         $aprendiz = new Aprendiz();
@@ -32,6 +34,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     
     echo "Error en el método de envío de datos.";
 }
-
-?>
-

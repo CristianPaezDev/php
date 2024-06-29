@@ -6,7 +6,7 @@
   <title>Formulario</title>
 </head>
 <body>
-  <form action="controlador.php" method="get">
+  <form action="controladores/controlador.php" method="POST">
     <div>
       <label for="nombre">Nombre:</label>
       <input type="text" id="nombre" name="nombre">
